@@ -1,4 +1,4 @@
-package algorithm.sorting.bubble;
+package algorithm.sorting.merge;
 
 import java.io.BufferedReader;
 import java.io.IOException;

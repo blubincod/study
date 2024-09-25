@@ -1,4 +1,4 @@
-package algorithm.sorting.bubble;
+package algorithm.sorting.heap;
 /**
  * 백준 15688번: 수 정렬하기 5
  * 문제 링크: https://www.acmicpc.net/problem/15688
