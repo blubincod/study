@@ -3,7 +3,7 @@ package algorithm.sorting.heap;
 import java.util.Arrays;
 
 public class _HeapSort {
-    public static void heapSort(int[] arr) {
+    private static void heapSort(int[] arr) {
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             heapify(arr, i, arr.length);
         }
@@ -33,7 +33,7 @@ public class _HeapSort {
         }
     }
 
-    public static void swap(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
