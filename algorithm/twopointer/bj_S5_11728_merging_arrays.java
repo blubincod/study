@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
  *
  * 접근 방법
  * - 정렬된 두 개의 배열을 받아서 투 포인터를 사용하여 수를 비교하여 작은 수를 새로운 배열에 추가한다.
- * 
+ *
  * 알고리즘 복잡도: O(N + M)
  */
 public class bj_S5_11728_merging_arrays {
