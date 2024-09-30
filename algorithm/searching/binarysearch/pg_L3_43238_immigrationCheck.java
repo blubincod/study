@@ -1,5 +1,7 @@
 package algorithm.searching.binarysearch;
 
+import java.util.Arrays;
+
 /**
  * 입국심사
  * 문제 링크: https://programmers.co.kr/learn/courses/30/lessons/43238
@@ -29,15 +31,39 @@ package algorithm.searching.binarysearch;
  * 시간 제한: 정확성 테스트 : 10초, 효율성 테스트 : 10초
  *
  * 접근 방법
- * 1. 이진 탐색을 사용하여 최적의 시간을 찾습니다.
- * 2. 탐색 범위는 1부터 (가장 긴 심사 시간 * n)까지입니다.
- * 3. 각 시간에 대해 모든 사람을 심사할 수 있는지 확인합니다.
- * 4. 가능한 경우 시간을 줄이고, 불가능한 경우 시간을 늘립니다.
+ * - 탐색 범위는 1부터 (가장 긴 심사 시간 * n)까지로 설정한다.
+ * - 각 시간에 모든 사람을 심사할 수 있는지 확인한다.
+ * - 가능한 경우 시간을 줄이고, 불가능한 경우 시간을 늘린다.
  *
- * 알고리즘 복잡도: O(M log(N*T))
- * - M: 심사관의 수
- * - N: 입국심사를 기다리는 사람의 수
- * - T: 가장 긴 심사 시간
+ * 알고리즘 복잡도:
  */
 public class pg_L3_43238_immigrationCheck {
+    public long solution(int n, int[] times) {
+        long left = 1;
+        long right = (long) n * times[times.length - 1];
+
+        while (left < right) {
+            long mid = left + (right - left) / 2;
+            long sum = 0;
+
+            for (int t : times) {
+                sum += mid / t;
+            }
+
+            if (sum >= n) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left;
+    }
+
+    public static void main() {
+        pg_L3_43238_immigrationCheck T = new pg_L3_43238_immigrationCheck();
+
+        System.out.println(T.solution(6, new int[]{7, 10}));
+        System.out.println(T.solution(6, new int[]{7, 10, 12, 5, 9}));
+    }
 }
