@@ -35,7 +35,7 @@ import java.util.Arrays;
  * - 각 시간에 모든 사람을 심사할 수 있는지 확인한다.
  * - 가능한 경우 시간을 줄이고, 불가능한 경우 시간을 늘린다.
  *
- * 알고리즘 복잡도:
+ * 알고리즘 복잡도: O(N long N)
  */
 public class pg_L3_43238_immigrationCheck {
     public long solution(int n, int[] times) {
