@@ -70,6 +70,7 @@ public class bj_S2_2630_color_paper {
         }
     }
 
+    // 정사각형의 색깔이 같은지 검사하는 함수
     private boolean isSameColor(int[][] paper, int x, int y, int size) {
         int color = paper[x][y];
         for (int i = x; i < x + size; i++) {
