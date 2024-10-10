@@ -46,6 +46,10 @@ public class bj_S2_2630_color_paper {
     private void findPaperAmount(int[][] paper, int x, int y, int size) {
         int mid = size / 2;
 
+        System.out.println("SIZE: " + size);
+        System.out.println("X: " + x + " " + size);
+        System.out.println("Y: " + y + " " + size);
+
         if (size == 1) {
             if (paper[x][y] == 0) {
                 white++;
