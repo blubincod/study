@@ -60,7 +60,7 @@ public class BJ_G5_12865_NormalBackPack {
                 }
             }
         }
-        
+
         Arrays.stream(dp).forEach(item -> System.out.println(Arrays.toString(item)));
         System.out.println();
 
