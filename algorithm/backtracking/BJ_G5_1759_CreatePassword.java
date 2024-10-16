@@ -1,6 +1,8 @@
 package algorithm.backtracking;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
 /**
  * 암호 만들기
  * 문제 링크: https://www.acmicpc.net/problem/1759
@@ -33,45 +35,52 @@ import java.util.Scanner;
  * 알고리즘 복잡도
  */
 public class BJ_G5_1759_CreatePassword {
-    static int n;
-    static int[] board;
-    static int cnt = 0;
+    static int L, C;
+    static char[] chars;
+    static boolean[] check;
 
-    private static int solution(int row) {
-        if (row == n) {
-            cnt++;
-            return cnt;
-        }
-
-        for (int i = 0; i < n; i++) {
-            board[row] = i;
-
-            if (isPromising(row)) {
-                solution(row + 1);
+    static void backtrack(int index, int length, int vowels, int consonants) {
+        if (length == L) {
+            // 모음, 자음 조건 통과하면 출력
+            if (vowels >= 1 && consonants >= 2) {
+                for (int i = 0; i < C; i++) {
+                    if (check[i]) System.out.print(chars[i]);
+                }
+                System.out.println();
             }
+            return;
         }
 
-        return cnt;
+        // 마지막 인덱스 시 반환
+        if (index == C) return;
+
+        check[index] = true;
+        if (isVowel(chars[index])) {
+            backtrack(index + 1, length + 1, vowels + 1, consonants);
+        } else {
+            backtrack(index + 1, length + 1, vowels, consonants + 1);
+        }
+
+        check[index] = false;
+        backtrack(index + 1, length, vowels, consonants);
     }
 
-    private static boolean isPromising(int row) {
-        for (int i = 0; i < row; i++) {
-            // 같은 열과 대각선 체크
-            if (board[row] == board[i] || row - i == Math.abs(board[row] - board[i])) {
-                return false;
-            }
-        }
-        return true;
+    static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
-
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        n = scanner.nextInt();
-        board = new int[n];
+        Scanner sc = new Scanner(System.in);
+        L = sc.nextInt();
+        C = sc.nextInt();
+        chars = new char[C];
+        check = new boolean[C];
 
-        System.out.println(solution(0));
+        for (int i = 0; i < C; i++) {
+            chars[i] = sc.next().charAt(0);
+        }
 
-        scanner.close();
+        Arrays.sort(chars);
+        backtrack(0, 0, 0, 0);
     }
 }
